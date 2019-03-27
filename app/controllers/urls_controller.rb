@@ -1,4 +1,4 @@
-require "securerandom"
+require 'securerandom'
 
 class UrlsController < ApplicationController
   def index
