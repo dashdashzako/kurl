@@ -1,11 +1,25 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 ddz:
-  original: https://www.dashdashzako.net/
+  id: 1
+  original: https://www.dashdashzako.net
   short: abcdef
   expires_at: <%= 2.days.from_now %>
+  created_at: 2019-03-26T18:34:49.324Z
+  updated_at: 2019-03-26T18:34:49.324Z
 
 hfa:
-  original: https://highflyers.agency/
+  id: 2
+  original: https://highflyers.agency
   short: ab1234
   expires_at: <%= 3.days.from_now %>
+  created_at: 2019-03-26T18:34:49.324Z
+  updated_at: 2019-03-26T18:34:49.324Z
+
+one:
+  id: 3
+  original: https://guides.rubyonrails.org
+  short: b3a139
+  expires_at: <%= 1.days.from_now %>
+  created_at: 2019-03-26T18:40:18.461Z
+  updated_at: 2019-03-26T18:40:18.461Z
