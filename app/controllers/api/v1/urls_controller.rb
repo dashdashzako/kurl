@@ -29,7 +29,11 @@ class Api::V1::UrlsController < ApplicationController
   private
 
   def url_params
-    params.require(:url).permit(:original)
+    begin
+      params.require(:url).permit(:original)
+    rescue => exception
+      false
+    end
   end
 
   def set_url
