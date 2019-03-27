@@ -1,6 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-valid:
-  original: https://www.dashdashzako.net
+ddz:
+  original: https://www.dashdashzako.net/
   short: abcdef
-  expires_at: 2019-03-27T10:13:21+00:00
+  expires_at: <%= 2.days.from_now %>
+
+hfa:
+  original: https://highflyers.agency/
+  short: ab1234
+  expires_at: <%= 3.days.from_now %>

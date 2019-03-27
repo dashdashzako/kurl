@@ -2,7 +2,7 @@ require 'test_helper'
 
 class UrlTest < ActiveSupport::TestCase
   def setup
-    @url = urls(:valid)
+    @url = urls(:ddz)
   end
 
   test 'valid url' do
