@@ -7,7 +7,7 @@ class Api::V1::LoginController < ApplicationController
       token_expiration = Time.now + 24.hours.to_i
       payload = { user_id: @user.id }
       token = AuthToken.encode payload
-      
+
       render json: { token: token, username: @user.username }, status: :ok
     else
       render json: { errors: 'Unauthorized' }, status: :unauthorized
