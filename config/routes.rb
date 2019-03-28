@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       post 'login', to: 'login#create'
 
-      resources :urls, only: %i[create show destroy]
+      resources :urls, only: %i[create destroy]
       resources :users, only: %i[show], param: :username
     end
   end

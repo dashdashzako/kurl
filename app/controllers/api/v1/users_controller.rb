@@ -3,6 +3,10 @@ class Api::V1::UsersController < ApplicationController
 
   # GET /api/v1/users/{username}
   def show
-    render json: @current_user
+    if params[:username] == @current_user.username
+      render json: @current_user.to_json(include: :urls)
+    else
+      render json: { errors: 'Unauthorized' }, status: :unauthorized
+    end
   end
 end
