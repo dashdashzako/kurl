@@ -35,6 +35,8 @@ class UrlTest < ActiveSupport::TestCase
     assert @url.valid?
     @url.original = 'https://www.highflyers.agency/post/47'
     assert @url.valid?
+    @url.original = 'https://www.highflyers.agency/post/47?this=is&yet=another%20query'
+    assert @url.valid?
   end
 
   test 'invalid without expiration date' do
