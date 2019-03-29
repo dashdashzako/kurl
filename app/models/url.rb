@@ -3,6 +3,8 @@ require 'securerandom'
 class Url < ApplicationRecord
   URL_REGEX = /\Ahttps?:\/\/[-a-zA-Z0-9@:%\._\+~#\=]{2,256}\.[a-z]{2,6}[-a-zA-Z0-9@:%_\+.~#?&\/=]*\z/
 
+  belongs_to :user, optional: true
+
   validates :original, format: { with: URL_REGEX, message: "given url isn't well formatted" }
   validates :short, length: { is: 6 }
   validates :expires_at, presence: true
