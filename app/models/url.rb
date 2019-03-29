@@ -11,10 +11,10 @@ class Url < ApplicationRecord
   before_validation :set_expires_at, on: :create
 
   def set_short_code
-    self.short = SecureRandom.hex(3)
+    self.short = SecureRandom.hex(3) if self.short.nil?
   end
 
   def set_expires_at
-    self.expires_at = 3.days.from_now
+    self.expires_at = 3.days.from_now if self.expires_at.nil?
   end
 end
