@@ -17,8 +17,12 @@ class Api::V1::UrlsController < ApplicationController
 
   # DELETE /api/v1/urls/{id}
   def destroy
-    @url.destroy
-    head :no_content
+    if @url.user_id == @current_user.id
+      @url.destroy
+      head :no_content
+    else
+      render json: { errors: 'Unauthorized' }, status: :unauthorized
+    end
   end
 
   private
