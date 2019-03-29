@@ -1,28 +1,27 @@
-require 'securerandom'
-
 class Api::V1::UrlsController < ApplicationController
-  before_action :set_url, only: [:show, :update, :destroy]
+  before_action :set_url, only: %i[destroy]
+  before_action :set_current_user, only: %i[create]
+  before_action :authorize_request, only: %i[destroy]
 
-  # GET urls
-  def index
-    render json: Url.all
-  end
-
-  # GET /urls/1
-  def show
-    render json: @url
-  end
-
-  # POST /urls
+  # POST /api/v1/urls
   def create
     @url = Url.new(url_params)
-    @url.short = SecureRandom.hex(3)
-    @url.expires_at = 3.days.from_now
+    @url.user_id = @current_user.id if @current_user
 
     if @url.save
-      redirect_to api_v1_url_url(@url)
+      render json: @url
     else
       render json: { errors: @url.errors.full_messages }, status: 422
+    end
+  end
+
+  # DELETE /api/v1/urls/{id}
+  def destroy
+    if @url.user_id == @current_user.id
+      @url.destroy
+      head :no_content
+    else
+      render json: { errors: 'Unauthorized' }, status: :unauthorized
     end
   end
 
