@@ -5,7 +5,12 @@ class UrlTest < ActiveSupport::TestCase
     @url = urls(:ddz)
   end
 
-  test 'valid url' do
+  test 'valid url with no user associated' do
+    assert @url.valid?
+  end
+
+  test 'valid url with a user associated' do
+    @url.user = users(:ddz)
     assert @url.valid?
   end
 
