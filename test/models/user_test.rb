@@ -42,4 +42,25 @@ class UserTest < ActiveSupport::TestCase
     @user.reload
     assert_equal 2, @user.urls.length
   end
+
+  test 'should cascade user destroy' do
+    User.destroy_all
+    Url.destroy_all
+    UrlAnalytic.destroy_all
+
+    @user.username = 'john'
+    @user.password = 'nobody'
+    @user.save
+
+    url = @user.urls.create(original: 'https://highflyers.agency')
+    assert_equal 1, @user.urls.length
+    url.url_analytics.create()
+    url.url_analytics.create()
+    assert_equal 2, url.url_analytics.length
+
+    @user.destroy
+    assert_equal 0, User.count
+    assert_equal 0, Url.count
+    assert_equal 0, UrlAnalytic.count
+  end
 end
