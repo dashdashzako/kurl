@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_28_153922) do
+ActiveRecord::Schema.define(version: 2019_03_30_162827) do
+
+  create_table "url_analytics", force: :cascade do |t|
+    t.integer "url_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["url_id"], name: "index_url_analytics_on_url_id"
+  end
 
   create_table "urls", force: :cascade do |t|
     t.datetime "created_at", null: false
