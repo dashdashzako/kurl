@@ -25,6 +25,17 @@ class Api::V1::UrlsController < ApplicationController
     end
   end
 
+  # GET /{short}
+  def show
+    @url = Url.find_by(short: params[:short])
+    if @url
+      @url.url_analytics.create()
+      redirect_to @url.original
+    else
+      render status: 404
+    end
+  end
+
   private
 
   def url_params
