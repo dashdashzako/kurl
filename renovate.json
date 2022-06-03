@@ -1,5 +1,27 @@
 {
   "extends": [
     "config:base"
-  ]
+  ],
+  "assigneesFromCodeOwners": true,
+  "packageRules": [
+    {
+      "updateTypes": [
+        "patch"
+      ],
+      "labels": ["dependencies"],
+      "automerge": true
+    },
+    {
+      "updateTypes": [
+        "minor"
+      ],
+      "labels": ["dependencies"]
+    },
+    {
+      "updateTypes": [
+        "major"
+      ],
+      "labels": ["dependencies", "breaking"]
+    }
+  ],
 }
